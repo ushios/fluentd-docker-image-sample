@@ -1,0 +1,16 @@
+version: '2'
+services:
+  fluent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "24224:24224"
+      - "8888:8888"
+    expose:
+      - "8888"
+    environment:
+      - "FLUENTD_CONF=fluent.conf"
+      - "FLUENTD_OPT="
+    volumes:
+      - "./data:/fluentd/log"
